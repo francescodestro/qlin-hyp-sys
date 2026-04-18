@@ -4,8 +4,8 @@ Code for "A hybrid characteristics/lines numerical method for quasilinear hyperb
 
 ## Contents
 
-- `numerics.py` -- solver (SSPRK(3,3), adaptive step control, moving mesh)
-- `manuscript_helpers.py` -- case study definitions and plotting
+- `numerics.py` -- solver 
+- `manuscript_helpers.py` -- case study definitions and plotting tools
 - `generate_results.ipynb` -- reproduces all figures and tables
 - `case_study_outputs/` -- precomputed results
 
