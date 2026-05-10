@@ -235,6 +235,7 @@ def mol_reference_uniform_grid(
 def save_case_figure(
     case_dir: Path, *, outpath: Path,
     include_reference: bool = True,
+    reference_label: str = r"Ref. ($K_{\rm ref}=50\,000$)",
 ) -> None:
     """Save a profiles + dt-history figure for one case study."""
     case_dir = Path(case_dir)
@@ -263,7 +264,7 @@ def save_case_figure(
         ax.plot(zH, UH[i, :], label="Hybrid" if i == 0 else None, linewidth=2, color="C0")
         ax.plot(zM, UM[i, :], label="MOL" if i == 0 else None, linewidth=2.5, color="k", linestyle="--", alpha=0.85)
         if ref_ok:
-            ax.plot(zR, UR[i, :], label=r"Ref. ($K_{\rm ref}=50\,000$)" if i == 0 else None, linewidth=3.5, color="C3", linestyle=":", alpha=0.95)
+            ax.plot(zR, UR[i, :], label=reference_label if i == 0 else None, linewidth=3.5, color="C3", linestyle=":", alpha=0.95)
         ax.set_ylabel(rf"$u_{{{i+1}}}(T)$"); ax.grid(True, alpha=0.25)
     axes[-1].set_xlabel(r"$z$")
     for idx, ax in enumerate(axes):
@@ -308,7 +309,7 @@ def save_case1_selector_figure(
     for i in range(n):
         ax = axes[i + 1]
         ax.plot(zM, UM[i, :], label="MOL" if i == 0 else None, linewidth=2.5, color="k", linestyle="--", alpha=0.85)
-        ax.plot(zM, UR[i, :], label="Ref." if i == 0 else None, linewidth=3.5, color="C3", linestyle=":", alpha=0.95)
+        ax.plot(zM, UR[i, :], label="Analytic" if i == 0 else None, linewidth=3.5, color="C3", linestyle=":", alpha=0.95)
         ax.plot(zH1, UH1[i, :], label="Hybrid (minimax)" if i == 0 else None, linewidth=2, color="C0")
         ax.plot(zH2, UH2[i, :], label="Hybrid (mean eigenvalue)" if i == 0 else None, linewidth=2, color="C2")
         ax.set_ylabel(rf"$u_{{{i+1}}}(T)$"); ax.grid(True, alpha=0.25)
